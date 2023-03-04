@@ -7,6 +7,7 @@
     body {
       text-align: center;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
       height: 100vh;
@@ -14,7 +15,7 @@
     }
 
     h1 {
-      font-size: 10vw;
+      font-size: 100px;
       font-family: 'Heavitas', sans-serif;
       color: white;
       text-shadow: 2px 2px black;
@@ -27,49 +28,42 @@
     span {
       color: orange;
     }
-    
-    .clock {
-      margin-top: 2vw;
-      font-size: 5vw;
+
+    #data-hora {
+      font-size: 50px;
       font-family: 'Heavitas', sans-serif;
       color: white;
-      text-shadow: 1px 1px black;
+      text-shadow: 2px 2px black;
     }
   </style>
   <link rel="stylesheet" type="text/css" href="Notion_widget/HEAVITAS.woff2">
 </head>
 <body>
   <h1 id="saudacao"></h1>
-  <div class="clock" id="clock"></div>
+  <div id="data-hora"></div>
   <script>
-    function atualizaRelogio() {
+    function atualizaDataHora() {
       var agora = new Date();
-      var hora = agora.getHours() - 3; // Subtrai 3 horas do horário atual para ajustar para Brasília
-      var minutos = agora.getMinutes();
-      var segundos = agora.getSeconds();
-      hora = hora < 10 ? "0" + hora : hora;
-      minutos = minutos < 10 ? "0" + minutos : minutos;
-      segundos = segundos < 10 ? "0" + segundos : segundos;
-      var data = agora.toLocaleDateString('pt-BR');
-      var horaFormatada = hora + ":" + minutos;
-      document.getElementById("clock").innerHTML = horaFormatada + " - " + data;
+      var horaBrasilia = agora.getHours() - 3; // Subtrai 3 horas do horário atual para ajustar para Brasília
+      var dia = agora.getDate();
+      var mes = agora.getMonth() + 1;
+      var ano = agora.getFullYear();
+      var hora = agora.getHours();
+      var minuto = agora.getMinutes();
+      var segundo = agora.getSeconds();
+      if (horaBrasilia < 6) {
+        saudacao = "Boa noite";
+      } else if (horaBrasilia < 12) {
+        saudacao = "Bom dia";
+      } else if (horaBrasilia < 18) {
+        saudacao = "Boa tarde";
+      } else {
+        saudacao = "Boa noite";
+      }
+      document.getElementById("saudacao").innerHTML = saudacao + " <span>usuário</span>";
+      document.getElementById("data-hora").innerHTML = dia + "/" + mes + "/" + ano + " " + hora + ":" + minuto + ":" + segundo;
     }
-
-    setInterval(atualizaRelogio, 1000);
-
-    var agora = new Date();
-    var horaBrasilia = agora.getHours() - 3; // Subtrai 3 horas do horário atual para ajustar para Brasília
-    var saudacao;
-    if (horaBrasilia < 6) {
-      saudacao = "Boa noite";
-    } else if (horaBrasilia < 12) {
-      saudacao = "Bom dia";
-    } else if (horaBrasilia < 18) {
-      saudacao = "Boa tarde";
-    } else {
-      saudacao = "Boa noite";
-    }
-    document.getElementById("saudacao").innerHTML = saudacao + " <span>usuário</span>";
+    setInterval(atualizaDataHora, 1000);
   </script>
 </body>
 </html> 
