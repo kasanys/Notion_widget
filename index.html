@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Exemplo de mensagem de acordo com o horário</title>
+  </head>
+  <body>
+    <p id="mensagem"></p>
+
+    <script>
+      // obter a hora atual em horário de Brasília
+      const agora = new Date().toLocaleString("pt-BR", { timeZone: "America/Sao_Paulo" });
+      const hora = parseInt(agora.split(" ")[1].split(":")[0]);
+
+      // exibir a mensagem correspondente com base na hora
+      let mensagem;
+      if (hora >= 6 && hora < 12) {
+        mensagem = "Bom dia usuário";
+      } else if (hora >= 12 && hora < 18) {
+        mensagem = "Boa tarde usuário";
+      } else {
+        mensagem = "Boa noite usuário";
+      }
+      document.getElementById("mensagem").textContent = mensagem;
+    </script>
+  </body>
+</html> 
