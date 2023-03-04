@@ -15,10 +15,10 @@
     }
 
     h1 {
-      font-size: 100px;
+      font-size: 100vw;
       font-family: 'Heavitas', sans-serif;
-      color: white;
-      text-shadow: 2px 2px black;
+      color: #e0e0e0;
+      text-shadow: 2px 2px rgba(128, 128, 128, 0.25);
       -webkit-user-select: none; /* Desabilita seleção no Safari */
       -moz-user-select: none; /* Desabilita seleção no Firefox */
       -ms-user-select: none; /* Desabilita seleção no IE 10+ */
@@ -26,14 +26,14 @@
     }
 
     span {
-      color: orange;
+      color: #5312b5;
     }
 
     #data-hora {
-      font-size: 50px;
+      font-size: 50vw;
       font-family: 'Heavitas', sans-serif;
-      color: white;
-      text-shadow: 2px 2px black;
+      color: #e0e0e0;
+      text-shadow: 2px 2px rgba(128, 128, 128, 0.25);
     }
   </style>
   <link rel="stylesheet" type="text/css" href="Notion_widget/HEAVITAS.woff2">
@@ -52,13 +52,13 @@
       var minuto = agora.getMinutes();
       var segundo = agora.getSeconds();
       if (horaBrasilia < 6) {
-        saudacao = "Boa noite";
+        saudacao = "Boa madru";
       } else if (horaBrasilia < 12) {
-        saudacao = "Bom dia";
+        saudacao = "Bodia";
       } else if (horaBrasilia < 18) {
-        saudacao = "Boa tarde";
+        saudacao = "Batarde";
       } else {
-        saudacao = "Boa noite";
+        saudacao = "moanoite";
       }
       document.getElementById("saudacao").innerHTML = saudacao + " <span>usuário</span>";
       document.getElementById("data-hora").innerHTML = dia + "/" + mes + "/" + ano + " " + hora + ":" + minuto + ":" + segundo;
