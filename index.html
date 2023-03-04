@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Saudação</title>
+  <title>Bagui Notion</title>
   <style>
     body {
       text-align: center;
@@ -14,17 +14,21 @@
     }
 
     h1 {
-      font-size: 100px;
+     font-size: 100px;
       font-family: 'Heavitas', sans-serif;
-      color: white;
-      text-shadow: 2px 2px black;
+      color: #9a24d1; /* Alterar a cor da fonte para #9a24d1 */
+      text-shadow: 2px 2px rgba(128, 128, 128, 0.25); /* Diminuir a opacidade da sombra para 25% */
+      -webkit-user-select: none; /* Desabilita seleção no Safari */
+      -moz-user-select: none; /* Desabilita seleção no Firefox */
+      -ms-user-select: none; /* Desabilita seleção no IE 10+ */
+      user-select: none; /* Desabilita seleção na maioria dos navegadores */
     }
 
     span {
       color: orange;
     }
   </style>
-  <link rel="stylesheet" type="text/css" href="caminho/para/a/fonte/Heavitas.css">
+  <link rel="stylesheet" type="text/css" href="Notion_widget/HEAVITAS.woff2">
 </head>
 <body>
   <h1 id="saudacao"></h1>
@@ -44,4 +48,4 @@
     document.getElementById("saudacao").innerHTML = saudacao + " <span>usuário</span>";
   </script>
 </body>
-</html> 
+</html>
