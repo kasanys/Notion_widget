@@ -5,13 +5,17 @@
   <title>Saudação</title>
   <style>
     body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      font-family: 'Heavitas', sans-serif;
+      font-size: 100px;
       text-align: center;
-      margin: 0 auto;
     }
 
-    h1 {
-      font-size: 100px;
-      font-family: 'Heavitas', sans-serif;
+    #usuario {
       color: orange;
     }
   </style>
@@ -32,7 +36,7 @@
     } else {
       saudacao = "Boa noite";
     }
-    document.getElementById("saudacao").innerHTML = saudacao + " usuário";
+    document.getElementById("saudacao").innerHTML = saudacao + " <span id='usuario'>usuário</span>";
   </script>
 </body>
 </html> 
