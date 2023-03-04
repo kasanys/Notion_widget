@@ -3,24 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <title>Saudação</title>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
   <style>
     body {
       text-align: center;
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
       height: 100vh;
       margin: 0;
-      background-color: #333;
     }
 
     h1 {
-      font-size: 10vw;
+      font-size: 100px;
       font-family: 'Heavitas', sans-serif;
-      color: #e8e8e8;
-      text-shadow: 2px 2px rgba(128, 128, 128, 0.25);
+      color: white;
+      text-shadow: 2px 2px black;
       -webkit-user-select: none; /* Desabilita seleção no Safari */
       -moz-user-select: none; /* Desabilita seleção no Firefox */
       -ms-user-select: none; /* Desabilita seleção no IE 10+ */
@@ -28,38 +25,61 @@
     }
 
     span {
-      color: #f0762b;
+      color: orange;
     }
-
-    #clock {
-      font-size: 5vw;
+    .clock {
+      font-size: 60px;
       font-family: 'Heavitas', sans-serif;
-      color: #e8e8e8;
-      margin-top: 10px;
+      color: white;
+      text-shadow: 2px 2px black;
+      margin-top: 50px;
     }
   </style>
-  <link rel="stylesheet" type="text/css" href="Notion_widget/HEAVITAS.woff2">
+  <link rel="stylesheet" type="text/css" href="caminho/para/a/fonte/Heavitas.css">
 </head>
 <body>
   <h1 id="saudacao"></h1>
-  <div id="clock"></div>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+  <div class="clock" id="clock"></div>
   <script>
-    var agora = moment().utcOffset(-180); // Define o horário de Brasília (-180 minutos)
-    var saudacao;
-    var horaBrasilia = agora.hour();
-    if (horaBrasilia < 6) {
-      saudacao = "Boa Madru";
-    } else if (horaBrasilia < 12) {
-      saudacao = "Bodia";
-    } else if (horaBrasilia < 18) {
-      saudacao = "batarde";
-    } else {
-      saudacao = "Moanoite";
+    function saudacao() {
+      var agora = new Date();
+      var horaBrasilia = agora.getHours() - 3; // Subtrai 3 horas do horário atual para ajustar para Brasília
+      var saudacao;
+      if (horaBrasilia < 6) {
+        saudacao = "Boa noite";
+      } else if (horaBrasilia < 12) {
+        saudacao = "Bom dia";
+      } else if (horaBrasilia < 18) {
+        saudacao = "Boa tarde";
+      } else {
+        saudacao = "Boa noite";
+      }
+      document.getElementById("saudacao").innerHTML = saudacao + " <span>usuário</span>";
     }
-    document.getElementById("saudacao").innerHTML = saudacao + " <span>usuário</span>";
 
-    // Função para atualizar o relógio digital e a data
-    function atualizarRelogio() {
-      var agora = moment().utcOffset(-180); // Define o horário de Brasília (-180 minutos)
-      var clock = agora.format("HH:mm"); // Formato 24 
+    function relogio() {
+      var agora = new Date();
+      var hora = agora.getHours() - 3; // Subtrai 3 horas do horário atual para ajustar para Brasília
+      var minuto = agora.getMinutes();
+      var segundo = agora.getSeconds();
+      hora = padZeroEsquerda(hora);
+      minuto = padZeroEsquerda(minuto);
+      segundo = padZeroEsquerda(segundo);
+      var data = agora.toLocaleDateString('pt-BR');
+      var horaFormatada = hora + ":" + minuto + ":" + segundo;
+      document.getElementById("clock").innerHTML = horaFormatada + " " + data;
+    }
+
+    function padZeroEsquerda(valor) {
+      if (valor < 10) {
+        valor = "0" + valor;
+      }
+      return valor;
+    }
+
+    saudacao();
+    relogio();
+    setInterval(relogio, 1000);
+  </script>
+</body>
+</html> 
