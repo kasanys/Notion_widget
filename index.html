@@ -1,26 +1,33 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Exemplo de mensagem de acordo com o horário</title>
+    <title>Cumprimento baseado na hora</title>
+    <style>
+      body {
+        font-family: "Heavitas", sans-serif;
+        font-size: 40px;
+      }
+      .username {
+        color: orange;
+      }
+    </style>
   </head>
   <body>
-    <p id="mensagem"></p>
-
     <script>
-      // obter a hora atual em horário de Brasília
-      const agora = new Date().toLocaleString("pt-BR", { timeZone: "America/Sao_Paulo" });
-      const hora = parseInt(agora.split(" ")[1].split(":")[0]);
+      var agora = new Date(); // cria um objeto com a hora atual do computador do usuário
+      var hora = agora.getHours(); // obtém apenas a hora atual
+      var mensagem; // declara uma variável para a mensagem que será exibida
 
-      // exibir a mensagem correspondente com base na hora
-      let mensagem;
       if (hora >= 6 && hora < 12) {
-        mensagem = "Bom dia usuário";
+        mensagem = "Bom dia";
       } else if (hora >= 12 && hora < 18) {
-        mensagem = "Boa tarde usuário";
+        mensagem = "Boa tarde";
       } else {
-        mensagem = "Boa noite usuário";
+        mensagem = "Boa noite";
       }
-      document.getElementById("mensagem").textContent = mensagem;
+
+      // exibe a mensagem com o cumprimento baseado na hora e o nome do usuário
+      document.write(mensagem + ", <span class='username'>usuário</span>!");
     </script>
   </body>
-</html> 
+</html>
