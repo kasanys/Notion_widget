@@ -15,7 +15,7 @@
     }
 
     h1 {
-      font-size: 100vw;
+      font-size: 10vw;
       font-family: 'Heavitas', sans-serif;
       color: #e0e0e0;
       text-shadow: 2px 2px rgba(128, 128, 128, 0.25);
@@ -30,17 +30,26 @@
     }
 
     #data-hora {
-      font-size: 50vw;
+      font-size: 5vw;
       font-family: 'Heavitas', sans-serif;
       color: #e0e0e0;
       text-shadow: 2px 2px rgba(128, 128, 128, 0.25);
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
     }
   </style>
   <link rel="stylesheet" type="text/css" href="Notion_widget/HEAVITAS.woff2">
 </head>
 <body>
-  <h1 id="saudacao"></h1>
-  <div id="data-hora"></div>
+  <div class="container">
+    <h1 id="saudacao"></h1>
+    <div id="data-hora"></div>
+  </div>
   <script>
     function atualizaDataHora() {
       var agora = new Date();
@@ -60,7 +69,7 @@
       } else {
         saudacao = "moanoite";
       }
-      document.getElementById("saudacao").innerHTML = saudacao + " <span>usuário</span>";
+      document.getElementById("saudacao").innerHTML = saudacao + " <span>usuário</ 
       document.getElementById("data-hora").innerHTML = dia + "/" + mes + "/" + ano + " " + hora + ":" + minuto + ":" + segundo;
     }
     setInterval(atualizaDataHora, 1000);
